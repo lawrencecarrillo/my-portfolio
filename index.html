@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lawrence Carrillo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <div class="logo">LC<span>.</span></div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="available-badge">
+                <span class="available-dot"></span>
+                Available for new projects
+            </div>
+            <h1>Lawrence <span class="accent">Carrillo</span></h1>
+            <p class="hero-tagline">
+                NYC <span class="sep">|</span>
+                Massage Therapist <span class="sep">·</span>
+                Restaurant Manager <span class="sep">·</span>
+                Actor <span class="sep">·</span>
+                Puppeteer <span class="sep">·</span>
+                AI Explorer
+            </p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                <a href="#about" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+        <div class="about-inner">
+            <div class="about-photo-col">
+                <div class="photo-frame">
+                    <img src="avatar.png" alt="Lawrence Carrillo">
+                </div>
+            </div>
+            <div class="about-text-col">
+                <p class="section-label">About Me</p>
+                <h2>From Puppets to <em>Pixels</em></h2>
+                <p>Originally from California, I've called New York City home for 19 years. The energy of this city fuels my diverse passions and endless curiosity.</p>
+                <p>After years of making puppets come to life with my bare hands, I'm now applying that same creative direction to explore the frontiers of Artificial Intelligence.</p>
+                <p>When I'm not diving into new tech, you can find me wandering NYC side streets, seeking inspiration at the MoMA, or catching the latest Broadway show.</p>
+                <div class="stats">
+                    <div><div class="stat-value">19+</div><div class="stat-label">Years in NYC</div></div>
+                    <div><div class="stat-value">Arts</div><div class="stat-label">Background</div></div>
+                    <div><div class="stat-value">AI</div><div class="stat-label">Focus</div></div>
+                    <div><div class="stat-value">NY</div><div class="stat-label">Location</div></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="contact-inner">
+            <div class="contact-header">
+                <p class="section-label">Get in touch</p>
+                <h2>Let's Create Something <em>Together</em></h2>
+            </div>
+            <div class="contact-cards">
+                <a href="mailto:lawrence.carrillo@pursuit.org" class="contact-card">
+                    <div class="contact-icon">✉️</div>
+                    <h3>Email</h3>
+                    <p>lawrence.carrillo@pursuit.org</p>
+                </a>
+                <a href="tel:+14153350773" class="contact-card">
+                    <div class="contact-icon">📞</div>
+                    <h3>Phone</h3>
+                    <p>(415) 335-0773</p>
+                </a>
+                <div class="contact-card">
+                    <div class="contact-icon">📍</div>
+                    <h3>Location</h3>
+                    <p>New York City, NY</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">LC<span>.</span></div>
+        <p>&copy; 2026 Lawrence Carrillo. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href'))
+                    .scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+
+</body>
+</html>
