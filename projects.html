@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — Lawrence Carrillo</title>
+    <style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: Georgia, serif;
+    background-color: #1a1a2e;
+    color: #e0e0e0;
+    line-height: 1.8;
+    min-height: 100vh;
+}
+
+/* ── NAV ── */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(26, 26, 46, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+nav .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo { font-size: 1.25rem; font-weight: bold; letter-spacing: 0.05em; text-decoration: none; color: #e0e0e0; }
+.logo span { color: #a0a0a0; }
+
+.nav-links { display: flex; gap: 32px; list-style: none; }
+
+.nav-links a {
+    color: #8a8a9a;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 0; height: 1px;
+    background: #a0a0a0;
+    transition: width 0.25s;
+}
+
+.nav-links a:hover { color: #e0e0e0; }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: #e0e0e0; }
+.nav-links a.active::after { width: 100%; }
+
+/* ── PAGE HEADER ── */
+.page-header {
+    padding: 140px 24px 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.page-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(160,160,160,0.07) 0%, transparent 65%);
+    pointer-events: none;
+}
+
+.page-header .section-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a0a0a0;
+    margin-bottom: 16px;
+}
+
+.page-header h1 {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+}
+
+.page-header h1 em {
+    color: rgba(160,160,160,0.85);
+    font-style: italic;
+}
+
+.page-header p {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    color: #8a8a9a;
+    max-width: 520px;
+    margin: 0 auto;
+    font-weight: 300;
+    line-height: 1.7;
+}
+
+/* ── PROJECTS GRID ── */
+.projects-section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px 120px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 32px;
+}
+
+/* ── PROJECT CARD ── */
+.project-card {
+    background-color: #16213e;
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 24px;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(160,160,160,0.25);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.45);
+}
+
+/* ── PREVIEW WINDOW ── */
+.preview-window {
+    position: relative;
+    background: #0d1b33;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.window-chrome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+.window-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot-red   { background: #ff5f57; }
+.dot-yellow { background: #febc2e; }
+.dot-green  { background: #28c840; }
+
+.window-url {
+    margin-left: 10px;
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+    padding: 3px 10px;
+    font-family: Arial, sans-serif;
+    font-size: 0.72rem;
+    color: #5a626e;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.preview-iframe-wrap {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+}
+
+.preview-iframe-wrap iframe {
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: top left;
+    border: none;
+    pointer-events: none;
+}
+
+/* Clickable overlay so the whole card area opens the link */
+.preview-overlay {
+    position: absolute;
+    inset: 0;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(13, 27, 51, 0);
+    transition: background 0.3s;
+}
+
+.project-card:hover .preview-overlay {
+    background: rgba(13, 27, 51, 0.35);
+}
+
+.preview-launch-btn {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s, transform 0.3s;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.project-card:hover .preview-launch-btn {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── CARD BODY ── */
+.card-body {
+    padding: 28px 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+}
+
+.card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.build-badge {
+    font-family: Arial, sans-serif;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #a0a0a0;
+    background: rgba(160,160,160,0.1);
+    border: 1px solid rgba(160,160,160,0.2);
+    border-radius: 999px;
+    padding: 4px 12px;
+}
+
+.tag-list {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.tag {
+    font-family: Arial, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.07);
+    color: #8a8a9a;
+}
+
+.card-body h2 {
+    font-size: 1.55rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #e0e0e0;
+    letter-spacing: -0.01em;
+}
+
+.card-body p {
+    font-family: Arial, sans-serif;
+    font-size: 0.92rem;
+    color: #8a8a9a;
+    line-height: 1.7;
+    font-weight: 300;
+}
+
+.card-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #a0a0a0;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.card-link:hover { color: #e0e0e0; }
+
+.card-link-arrow {
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.card-link:hover .card-link-arrow { transform: translate(3px, -3px); }
+
+.card-year {
+    font-family: Arial, sans-serif;
+    font-size: 0.75rem;
+    color: #5a626e;
+}
+
+/* ── COMING SOON CARD ── */
+.project-card.coming-soon {
+    border-style: dashed;
+    border-color: rgba(255,255,255,0.07);
+    background: rgba(22,33,62,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 420px;
+    text-align: center;
+    padding: 48px 32px;
+    gap: 16px;
+    cursor: default;
+}
+
+.coming-soon:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: rgba(255,255,255,0.1);
+}
+
+.coming-soon-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(160,160,160,0.08);
+    border: 1px solid rgba(160,160,160,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+}
+
+.coming-soon h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #5a626e;
+}
+
+.coming-soon p {
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    color: #3a424e;
+    max-width: 220px;
+    line-height: 1.6;
+}
+
+/* ── BACK LINK ── */
+.back-bar {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 24px 48px;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #8a8a9a;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.back-link:hover { color: #e0e0e0; }
+
+/* ── FOOTER ── */
+footer {
+    padding: 48px 24px;
+    border-top: 1px solid rgba(255,255,255,0.04);
+    text-align: center;
+    background-color: #1a1a2e;
+}
+
+.footer-logo { font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
+.footer-logo span { color: #a0a0a0; }
+footer p { font-family: Arial, sans-serif; font-size: 0.85rem; color: #8a8a9a; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+    .projects-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .preview-iframe-wrap { height: 220px; }
+}
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-inner">
+            <a href="portfolio.html" class="logo">LC<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="portfolio.html#about">About</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="portfolio.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <header class="page-header">
+        <p class="section-label">Pursuit AI Native Fellowship · 2026</p>
+        <h1>Builds &amp; <em>Projects</em></h1>
+        <p>Real things I've built from scratch — combining creativity, code, and a healthy obsession with making things that work.</p>
+    </header>
+
+    <!-- PROJECTS -->
+    <div class="projects-section">
+        <div class="projects-grid">
+
+            <!-- BUILD 1: PatchNYC -->
+            <div class="project-card">
+                <div class="preview-window">
+                    <div class="window-chrome">
+                        <div class="window-dot dot-red"></div>
+                        <div class="window-dot dot-yellow"></div>
+                        <div class="window-dot dot-green"></div>
+                        <div class="window-url">patchnyc.onrender.com</div>
+                    </div>
+                    <div class="preview-iframe-wrap">
+                        <iframe src="https://patchnyc.onrender.com/index.html" title="PatchNYC preview" loading="lazy" scrolling="no"></iframe>
+                        <a href="https://patchnyc.onrender.com/index.html" target="_blank" rel="noopener" class="preview-overlay">
+                            <span class="preview-launch-btn">↗ Open Live Site</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="build-badge">Build #1</span>
+                        <div class="tag-list">
+                            <span class="tag">HTML/CSS/JS</span>
+                            <span class="tag">Community Tool</span>
+                            <span class="tag">Maps API</span>
+                        </div>
+                    </div>
+                    <h2>PatchNYC</h2>
+                    <p>A community-sourced cyclist safety network for New York City. Riders can report potholes, debris, missing signage, and other road hazards in real time — filtered by borough and severity — so the city stays safer for everyone on two wheels.</p>
+                    <div class="card-footer">
+                        <a href="https://patchnyc.onrender.com/index.html" target="_blank" rel="noopener" class="card-link">
+                            Visit PatchNYC <span class="card-link-arrow">↗</span>
+                        </a>
+                        <span class="card-year">2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BUILD 2: NeonCal -->
+            <div class="project-card">
+                <div class="preview-window">
+                    <div class="window-chrome">
+                        <div class="window-dot dot-red"></div>
+                        <div class="window-dot dot-yellow"></div>
+                        <div class="window-dot dot-green"></div>
+                        <div class="window-url">neon-cal.vercel.app</div>
+                    </div>
+                    <div class="preview-iframe-wrap">
+                        <iframe src="https://neon-cal.vercel.app" title="NeonCal preview" loading="lazy" scrolling="no"></iframe>
+                        <a href="https://neon-cal.vercel.app" target="_blank" rel="noopener" class="preview-overlay">
+                            <span class="preview-launch-btn">↗ Open Live Site</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="card-meta">
+                        <span class="build-badge">Build #2</span>
+                        <div class="tag-list">
+                            <span class="tag">HTML/CSS/JS</span>
+                            <span class="tag">AI-Powered</span>
+                            <span class="tag">Productivity</span>
+                        </div>
+                    </div>
+                    <h2>NeonCal</h2>
+                    <p>A bold, neon-themed calendar and productivity tool with AI smart-sensing built in. Track tasks by recurrence, add events on the fly, and run calculations without leaving the page — all wrapped in a visual style that refuses to be ignored.</p>
+                    <div class="card-footer">
+                        <a href="https://neon-cal.vercel.app" target="_blank" rel="noopener" class="card-link">
+                            Visit NeonCal <span class="card-link-arrow">↗</span>
+                        </a>
+                        <span class="card-year">2026</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMING SOON -->
+            <div class="project-card coming-soon">
+                <div class="coming-soon-icon">✦</div>
+                <h3>More coming soon</h3>
+                <p>Next build is in progress. Check back here as the Fellowship continues.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">LC<span>.</span></div>
+        <p>&copy; 2026 Lawrence Carrillo. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
