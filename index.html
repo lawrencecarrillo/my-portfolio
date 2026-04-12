@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lawrence Carrillo</title>
     <style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: Georgia, serif;
@@ -14,7 +18,7 @@ body {
     line-height: 1.8;
 }
 
-/* NAV */
+/* ── NAV ── */
 nav {
     position: fixed;
     top: 0;
@@ -35,10 +39,21 @@ nav .nav-inner {
     justify-content: space-between;
 }
 
-.logo { font-size: 1.25rem; font-weight: bold; letter-spacing: 0.05em; }
-.logo span { color: #a0a0a0; }
+.logo {
+    font-size: 1.25rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
 
-.nav-links { display: flex; gap: 32px; list-style: none; }
+.logo span {
+    color: #a0a0a0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
 
 .nav-links a {
     color: #8a8a9a;
@@ -47,10 +62,24 @@ nav .nav-inner {
     font-size: 0.9rem;
     font-weight: 500;
     transition: color 0.2s;
+    position: relative;
 }
-.nav-links a:hover { color: #a0a0a0; }
 
-/* HERO */
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #a0a0a0;
+    transition: width 0.25s;
+}
+
+.nav-links a:hover { color: #e0e0e0; }
+.nav-links a:hover::after { width: 100%; }
+
+/* ── HERO ── */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -65,12 +94,16 @@ nav .nav-inner {
 .hero-bg {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse at 60% 40%, rgba(160,160,160,0.06) 0%, transparent 60%),
-                radial-gradient(ellipse at 20% 80%, rgba(22,33,62,0.8) 0%, transparent 50%);
+    background: radial-gradient(ellipse at 60% 40%, rgba(160, 160, 160, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(22, 33, 62, 0.8) 0%, transparent 50%);
     pointer-events: none;
 }
 
-.hero-content { position: relative; z-index: 1; max-width: 860px; }
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 860px;
+}
 
 .available-badge {
     display: inline-flex;
@@ -79,7 +112,7 @@ nav .nav-inner {
     padding: 8px 18px;
     border-radius: 999px;
     background-color: #16213e;
-    border: 1px solid rgba(255,255,255,0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     margin-bottom: 28px;
     font-size: 0.7rem;
     font-family: Arial, sans-serif;
@@ -110,7 +143,10 @@ nav .nav-inner {
     letter-spacing: -0.02em;
 }
 
-.hero h1 .accent { color: #a0a0a0; font-style: italic; }
+.hero h1 .accent {
+    color: #a0a0a0;
+    font-style: italic;
+}
 
 .hero-tagline {
     font-family: Arial, sans-serif;
@@ -121,7 +157,10 @@ nav .nav-inner {
     font-weight: 300;
 }
 
-.hero-tagline .sep { color: rgba(160,160,160,0.4); margin: 0 8px; }
+.hero-tagline .sep {
+    color: rgba(160, 160, 160, 0.4);
+    margin: 0 8px;
+}
 
 .hero-buttons {
     display: flex;
@@ -142,14 +181,32 @@ nav .nav-inner {
     display: inline-block;
 }
 
-.btn-primary { background-color: #a0a0a0; color: #1a1a2e; border: none; }
-.btn-primary:hover { background-color: #b8b8b8; transform: translateY(-2px); }
+.btn-primary {
+    background-color: #a0a0a0;
+    color: #1a1a2e;
+    border: none;
+}
 
-.btn-outline { background-color: transparent; color: #e0e0e0; border: 1px solid rgba(160,160,160,0.35); }
-.btn-outline:hover { border-color: #a0a0a0; transform: translateY(-2px); }
+.btn-primary:hover {
+    background-color: #b8b8b8;
+    transform: translateY(-2px);
+}
 
-/* ABOUT */
-#about { padding: 100px 24px; }
+.btn-outline {
+    background-color: transparent;
+    color: #e0e0e0;
+    border: 1px solid rgba(160, 160, 160, 0.35);
+}
+
+.btn-outline:hover {
+    border-color: #a0a0a0;
+    transform: translateY(-2px);
+}
+
+/* ── ABOUT ── */
+#about {
+    padding: 100px 24px;
+}
 
 .about-inner {
     max-width: 1100px;
@@ -160,15 +217,21 @@ nav .nav-inner {
     flex-wrap: wrap;
 }
 
-.about-photo-col { flex: 0 0 380px; max-width: 380px; position: relative; }
+.about-photo-col {
+    flex: 0 0 380px;
+    max-width: 380px;
+    position: relative;
+}
 
-.photo-frame { position: relative; }
+.photo-frame {
+    position: relative;
+}
 
 .photo-frame::before {
     content: "";
     position: absolute;
     inset: 0;
-    background-color: rgba(160,160,160,0.15);
+    background-color: rgba(160, 160, 160, 0.15);
     border-radius: 24px;
     transform: rotate(6deg) scale(1.05);
     z-index: 0;
@@ -182,11 +245,14 @@ nav .nav-inner {
     object-fit: cover;
     object-position: center top;
     border-radius: 24px;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     display: block;
 }
 
-.about-text-col { flex: 1; min-width: 280px; }
+.about-text-col {
+    flex: 1;
+    min-width: 280px;
+}
 
 .section-label {
     font-family: Arial, sans-serif;
@@ -206,8 +272,15 @@ nav .nav-inner {
     color: #e0e0e0;
 }
 
-.about-text-col h2 em { color: rgba(160,160,160,0.85); }
-.about-text-col p { color: #8a8a9a; font-size: 1.05rem; margin-bottom: 20px; }
+.about-text-col h2 em {
+    color: rgba(160, 160, 160, 0.85);
+}
+
+.about-text-col p {
+    color: #8a8a9a;
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+}
 
 .stats {
     display: grid;
@@ -215,22 +288,38 @@ nav .nav-inner {
     gap: 24px;
     margin-top: 40px;
     padding-top: 40px;
-    border-top: 1px solid rgba(255,255,255,0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.stat-value { font-size: 2rem; font-weight: 700; color: #e0e0e0; margin-bottom: 4px; }
-.stat-label { font-family: Arial, sans-serif; font-size: 0.8rem; color: #8a8a9a; }
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e0e0e0;
+    margin-bottom: 4px;
+}
 
-/* CONTACT */
+.stat-label {
+    font-family: Arial, sans-serif;
+    font-size: 0.8rem;
+    color: #8a8a9a;
+}
+
+/* ── CONTACT ── */
 #contact {
     padding: 100px 24px;
-    background-color: rgba(22,33,62,0.35);
-    border-top: 1px solid rgba(255,255,255,0.04);
+    background-color: rgba(22, 33, 62, 0.35);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
 }
 
-.contact-inner { max-width: 1100px; margin: 0 auto; }
+.contact-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+}
 
-.contact-header { text-align: center; margin-bottom: 56px; }
+.contact-header {
+    text-align: center;
+    margin-bottom: 56px;
+}
 
 .contact-header h2 {
     font-size: clamp(2rem, 4vw, 3rem);
@@ -239,7 +328,9 @@ nav .nav-inner {
     margin-top: 12px;
 }
 
-.contact-header h2 em { color: rgba(160,160,160,0.85); }
+.contact-header h2 em {
+    color: rgba(160, 160, 160, 0.85);
+}
 
 .contact-cards {
     display: grid;
@@ -249,7 +340,7 @@ nav .nav-inner {
 
 .contact-card {
     background-color: #16213e;
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 40px 32px;
     text-align: center;
@@ -262,16 +353,16 @@ nav .nav-inner {
 }
 
 .contact-card:hover {
-    border-color: rgba(160,160,160,0.3);
+    border-color: rgba(160, 160, 160, 0.3);
     transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
 .contact-icon {
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background-color: rgba(160,160,160,0.1);
+    background-color: rgba(160, 160, 160, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -280,28 +371,66 @@ nav .nav-inner {
     transition: transform 0.3s;
 }
 
-.contact-card:hover .contact-icon { transform: scale(1.1); }
-.contact-card h3 { font-size: 1.2rem; margin-bottom: 8px; color: #e0e0e0; }
-.contact-card p { color: #8a8a9a; font-family: Arial, sans-serif; font-size: 0.9rem; transition: color 0.3s; }
-.contact-card:hover p { color: #e0e0e0; }
+.contact-card:hover .contact-icon {
+    transform: scale(1.1);
+}
 
-/* FOOTER */
+.contact-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+    color: #e0e0e0;
+}
+
+.contact-card p {
+    color: #8a8a9a;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.contact-card:hover p {
+    color: #e0e0e0;
+}
+
+/* ── FOOTER ── */
 footer {
     padding: 48px 24px;
-    border-top: 1px solid rgba(255,255,255,0.04);
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
     text-align: center;
     background-color: #1a1a2e;
 }
 
-.footer-logo { font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
-.footer-logo span { color: #a0a0a0; }
-footer p { font-family: Arial, sans-serif; font-size: 0.85rem; color: #8a8a9a; }
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
 
-/* RESPONSIVE */
+.footer-logo span {
+    color: #a0a0a0;
+}
+
+footer p {
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    color: #8a8a9a;
+}
+
+/* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-    .about-photo-col { flex: 0 0 100%; max-width: 340px; margin: 0 auto; }
-    .stats { grid-template-columns: repeat(2, 1fr); }
-    .nav-links { display: none; }
+    .about-photo-col {
+        flex: 0 0 100%;
+        max-width: 340px;
+        margin: 0 auto;
+    }
+
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-links {
+        display: none;
+    }
 }
     </style>
 </head>
@@ -329,10 +458,10 @@ footer p { font-family: Arial, sans-serif; font-size: 0.85rem; color: #8a8a9a; }
             </div>
             <h1>Lawrence <span class="accent">Carrillo</span></h1>
             <p class="hero-tagline">
-                Massage Therapist <span class="sep">·</span>
-                Restaurant Manager <span class="sep">·</span>
-                Actor <span class="sep">·</span>
-                Puppeteer <span class="sep">·</span>
+                Massage Therapist <span class="sep">&middot;</span>
+                Restaurant Manager <span class="sep">&middot;</span>
+                Actor <span class="sep">&middot;</span>
+                Puppeteer <span class="sep">&middot;</span>
                 AI Explorer
             </p>
             <div class="hero-buttons">
@@ -375,18 +504,18 @@ footer p { font-family: Arial, sans-serif; font-size: 0.85rem; color: #8a8a9a; }
                 <h2>Let's Create Something <em>Together</em></h2>
             </div>
             <div class="contact-cards">
-                <a href="/cdn-cgi/l/email-protection#7915180e0b1c171a1c571a180b0b1015151639090c0b0a0c100d57160b1e" class="contact-card">
-                    <div class="contact-icon">✉️</div>
+                <a href="mailto:lawrence.carrillo@pursuit.org" class="contact-card">
+                    <div class="contact-icon">&#x2709;&#xFE0F;</div>
                     <h3>Email</h3>
-                    <p><span class="__cf_email__" data-cfemail="d9b5b8aeabbcb7babcf7bab8ababb0b5b5b699a9acabaaacb0adf7b6abbe">[email&#160;protected]</span></p>
+                    <p>lawrence.carrillo@pursuit.org</p>
                 </a>
                 <a href="tel:+14153350773" class="contact-card">
-                    <div class="contact-icon">📞</div>
+                    <div class="contact-icon">&#x1F4DE;</div>
                     <h3>Phone</h3>
                     <p>(415) 335-0773</p>
                 </a>
                 <div class="contact-card">
-                    <div class="contact-icon">📍</div>
+                    <div class="contact-icon">&#x1F4CD;</div>
                     <h3>Location</h3>
                     <p>New York City, NY</p>
                 </div>
@@ -400,6 +529,15 @@ footer p { font-family: Arial, sans-serif; font-size: 0.85rem; color: #8a8a9a; }
         <p>&copy; 2026 Lawrence Carrillo. All rights reserved.</p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         document.querySelectorAll('a[href^="#"]').forEach(link => {
-            lin
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href'))
+                    .scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+
+</body>
+</html>
