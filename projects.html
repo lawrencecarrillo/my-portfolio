@@ -36,7 +36,14 @@ nav .nav-inner {
     justify-content: space-between;
 }
 
-.logo { font-size: 1.25rem; font-weight: bold; letter-spacing: 0.05em; text-decoration: none; color: #e0e0e0; }
+.logo {
+    font-size: 1.25rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: #e0e0e0;
+}
+
 .logo span { color: #a0a0a0; }
 
 .nav-links { display: flex; gap: 32px; list-style: none; }
@@ -160,13 +167,8 @@ nav .nav-inner {
     border-bottom: 1px solid rgba(255,255,255,0.04);
 }
 
-.window-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-}
-
-.dot-red   { background: #ff5f57; }
+.window-dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-red    { background: #ff5f57; }
 .dot-yellow { background: #febc2e; }
 .dot-green  { background: #28c840; }
 
@@ -200,7 +202,6 @@ nav .nav-inner {
     pointer-events: none;
 }
 
-/* Clickable overlay so the whole card area opens the link */
 .preview-overlay {
     position: absolute;
     inset: 0;
@@ -211,6 +212,7 @@ nav .nav-inner {
     justify-content: center;
     background: rgba(13, 27, 51, 0);
     transition: background 0.3s;
+    text-decoration: none;
 }
 
 .project-card:hover .preview-overlay {
@@ -272,11 +274,7 @@ nav .nav-inner {
     padding: 4px 12px;
 }
 
-.tag-list {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-}
+.tag-list { display: flex; gap: 6px; flex-wrap: wrap; }
 
 .tag {
     font-family: Arial, sans-serif;
@@ -344,7 +342,7 @@ nav .nav-inner {
     color: #5a626e;
 }
 
-/* ── COMING SOON CARD ── */
+/* ── COMING SOON ── */
 .project-card.coming-soon {
     border-style: dashed;
     border-color: rgba(255,255,255,0.07);
@@ -379,12 +377,7 @@ nav .nav-inner {
     margin-bottom: 4px;
 }
 
-.coming-soon h3 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #5a626e;
-}
-
+.coming-soon h3 { font-size: 1.1rem; font-weight: 700; color: #5a626e; }
 .coming-soon p {
     font-family: Arial, sans-serif;
     font-size: 0.85rem;
@@ -392,27 +385,6 @@ nav .nav-inner {
     max-width: 220px;
     line-height: 1.6;
 }
-
-/* ── BACK LINK ── */
-.back-bar {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 24px 48px;
-}
-
-.back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: Arial, sans-serif;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #8a8a9a;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.back-link:hover { color: #e0e0e0; }
 
 /* ── FOOTER ── */
 footer {
@@ -439,18 +411,18 @@ footer p { font-family: Arial, sans-serif; font-size: 0.85rem; color: #8a8a9a; }
     <!-- NAV -->
     <nav>
         <div class="nav-inner">
-            <a href="portfolio.html" class="logo">LC<span>.</span></a>
+            <a href="index.html" class="logo">LC<span>.</span></a>
             <ul class="nav-links">
-                <li><a href="portfolio.html#about">About</a></li>
+                <li><a href="index.html#about">About</a></li>
                 <li><a href="projects.html" class="active">Projects</a></li>
-                <li><a href="portfolio.html#contact">Contact</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- PAGE HEADER -->
     <header class="page-header">
-        <p class="section-label">Pursuit AI Native Fellowship · 2026</p>
+        <p class="section-label">Pursuit AI Native Fellowship &middot; 2026</p>
         <h1>Builds &amp; <em>Projects</em></h1>
         <p>Real things I've built from scratch — combining creativity, code, and a healthy obsession with making things that work.</p>
     </header>
@@ -471,7 +443,7 @@ footer p { font-family: Arial, sans-serif; font-size: 0.85rem; color: #8a8a9a; }
                     <div class="preview-iframe-wrap">
                         <iframe src="https://patchnyc.onrender.com/index.html" title="PatchNYC preview" loading="lazy" scrolling="no"></iframe>
                         <a href="https://patchnyc.onrender.com/index.html" target="_blank" rel="noopener" class="preview-overlay">
-                            <span class="preview-launch-btn">↗ Open Live Site</span>
+                            <span class="preview-launch-btn">&#x2197; Open Live Site</span>
                         </a>
                     </div>
                 </div>
@@ -479,7 +451,7 @@ footer p { font-family: Arial, sans-serif; font-size: 0.85rem; color: #8a8a9a; }
                     <div class="card-meta">
                         <span class="build-badge">Build #1</span>
                         <div class="tag-list">
-                            <span class="tag">HTML/CSS/JS</span>
+                            <span class="tag">HTML / CSS / JS</span>
                             <span class="tag">Community Tool</span>
                             <span class="tag">Maps API</span>
                         </div>
@@ -488,7 +460,7 @@ footer p { font-family: Arial, sans-serif; font-size: 0.85rem; color: #8a8a9a; }
                     <p>A community-sourced cyclist safety network for New York City. Riders can report potholes, debris, missing signage, and other road hazards in real time — filtered by borough and severity — so the city stays safer for everyone on two wheels.</p>
                     <div class="card-footer">
                         <a href="https://patchnyc.onrender.com/index.html" target="_blank" rel="noopener" class="card-link">
-                            Visit PatchNYC <span class="card-link-arrow">↗</span>
+                            Visit PatchNYC <span class="card-link-arrow">&#x2197;</span>
                         </a>
                         <span class="card-year">2026</span>
                     </div>
@@ -507,7 +479,7 @@ footer p { font-family: Arial, sans-serif; font-size: 0.85rem; color: #8a8a9a; }
                     <div class="preview-iframe-wrap">
                         <iframe src="https://neon-cal.vercel.app" title="NeonCal preview" loading="lazy" scrolling="no"></iframe>
                         <a href="https://neon-cal.vercel.app" target="_blank" rel="noopener" class="preview-overlay">
-                            <span class="preview-launch-btn">↗ Open Live Site</span>
+                            <span class="preview-launch-btn">&#x2197; Open Live Site</span>
                         </a>
                     </div>
                 </div>
@@ -515,7 +487,7 @@ footer p { font-family: Arial, sans-serif; font-size: 0.85rem; color: #8a8a9a; }
                     <div class="card-meta">
                         <span class="build-badge">Build #2</span>
                         <div class="tag-list">
-                            <span class="tag">HTML/CSS/JS</span>
+                            <span class="tag">HTML / CSS / JS</span>
                             <span class="tag">AI-Powered</span>
                             <span class="tag">Productivity</span>
                         </div>
@@ -524,7 +496,7 @@ footer p { font-family: Arial, sans-serif; font-size: 0.85rem; color: #8a8a9a; }
                     <p>A bold, neon-themed calendar and productivity tool with AI smart-sensing built in. Track tasks by recurrence, add events on the fly, and run calculations without leaving the page — all wrapped in a visual style that refuses to be ignored.</p>
                     <div class="card-footer">
                         <a href="https://neon-cal.vercel.app" target="_blank" rel="noopener" class="card-link">
-                            Visit NeonCal <span class="card-link-arrow">↗</span>
+                            Visit NeonCal <span class="card-link-arrow">&#x2197;</span>
                         </a>
                         <span class="card-year">2026</span>
                     </div>
@@ -533,7 +505,7 @@ footer p { font-family: Arial, sans-serif; font-size: 0.85rem; color: #8a8a9a; }
 
             <!-- COMING SOON -->
             <div class="project-card coming-soon">
-                <div class="coming-soon-icon">✦</div>
+                <div class="coming-soon-icon">&#x2726;</div>
                 <h3>More coming soon</h3>
                 <p>Next build is in progress. Check back here as the Fellowship continues.</p>
             </div>
